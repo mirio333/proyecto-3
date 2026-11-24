@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚌 Rutas Puebla — Sprint 1
 
 API REST + interfaz web para administrar **paradas de transporte público de la ciudad de Puebla**.
@@ -106,3 +107,7 @@ Clave en Redis: `parada:{id}` (ejemplo `parada:pue-001`)
 - [x] Frontend responsive con mapa Leaflet
 - [ ] Pruebas manuales de los 5 endpoints (ver `GUIA_PASO_A_PASO.md`, paso 8)
 - [x] README con instrucciones de instalación y ejecución
+=======
+# proyecto-3
+este proyecto es uno de rutas
+>>>>>>> b71b7d3208fc447dcf0291dd5400029be2607654
