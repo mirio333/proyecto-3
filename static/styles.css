@@ -1,0 +1,435 @@
+/* ============================================
+   Rutas Puebla · estética rural
+   Paleta: verde bosque, tierra, kraft, mostaza
+   ============================================ */
+:root {
+  --verde-oscuro: #2f4a28;
+  --verde: #3f5b34;
+  --verde-claro: #7a9a58;
+  --tierra: #8a5a35;
+  --tierra-oscura: #6b4326;
+  --terracota: #b4532e;
+  --mostaza: #d9a441;
+  --papel: #f4ecd8;
+  --papel-oscuro: #e8dcbc;
+  --tinta: #2c2417;
+  --borde: #cdbd96;
+  --sombra: 0 3px 10px rgba(60, 40, 15, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, sans-serif;
+  color: var(--tinta);
+  background-color: var(--papel);
+  /* textura sutil de papel kraft */
+  background-image:
+    radial-gradient(rgba(138, 90, 53, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(138, 90, 53, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px, 37px 37px;
+  background-position: 0 0, 11px 17px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; }
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  position: relative;
+  background: linear-gradient(180deg, #e9c46a 0%, #f4ecd8 100%);
+  color: var(--verde-oscuro);
+  text-align: center;
+  padding: 36px 20px 90px;
+  overflow: hidden;
+}
+.encabezado::before {            /* solcito */
+  content: "";
+  position: absolute;
+  top: 18px; right: 8%;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: #f2a541;
+  box-shadow: 0 0 0 12px rgba(242, 165, 65, 0.25), 0 0 0 28px rgba(242, 165, 65, 0.12);
+}
+.encabezado__contenido { position: relative; z-index: 2; }
+.sello {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 14px;
+  border: 2px dashed var(--tierra);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--tierra-oscura);
+}
+.encabezado h1 {
+  margin: 4px 0;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 800;
+  color: var(--verde-oscuro);
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+}
+.lema { margin: 0; font-size: 1.1rem; color: var(--tierra-oscura); font-weight: 600; }
+
+.colinas {
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 100%; height: 90px;
+  z-index: 1;
+}
+.colina--lejos { fill: var(--verde-claro); }
+.colina--cerca { fill: var(--verde); }
+
+/* ---------- Layout ---------- */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 22px;
+  padding: 22px;
+  max-width: 1200px;
+  margin: -1px auto 0;
+}
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; padding: 16px; }
+}
+
+.panel {
+  background: #fffaf0;
+  border: 2px solid var(--borde);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+  position: relative;
+}
+.panel h2 {
+  margin: 0 0 14px;
+  font-size: 1.4rem;
+  color: var(--verde-oscuro);
+  padding-bottom: 8px;
+  border-bottom: 3px double var(--borde);
+}
+.icono { margin-right: 4px; }
+
+/* ---------- Formulario ---------- */
+form { display: flex; flex-direction: column; gap: 8px; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+label { font-weight: 700; font-size: 14px; color: var(--tierra-oscura); }
+
+input, select {
+  width: 100%;
+  padding: 11px 12px;
+  font: inherit;
+  background: #fff;
+  border: 2px solid var(--borde);
+  border-radius: 10px;
+  color: var(--tinta);
+}
+input:focus, select:focus, .btn:focus-visible {
+  outline: 3px solid var(--mostaza);
+  outline-offset: 1px;
+  border-color: var(--verde);
+}
+.ayuda { margin: 0; font-size: 13px; color: #6f604a; }
+
+/* ---------- Botones ---------- */
+.botones { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.btn {
+  padding: 11px 18px;
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+  transition: transform 0.08s, filter 0.15s;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+.btn--principal { background: var(--verde); }
+.btn--tierra   { background: var(--tierra); }
+.btn--gris     { background: #7b7566; }
+.btn--editar   { background: var(--mostaza); color: var(--tinta); }
+.btn--eliminar { background: var(--terracota); }
+.btn--mapa     { background: var(--verde-claro); color: var(--tinta); }
+.btn--chico    { padding: 7px 12px; font-size: 14px; }
+
+.oculto { display: none !important; }
+
+/* ---------- Lista ---------- */
+.barra { display: flex; gap: 10px; margin-bottom: 8px; }
+.barra input { flex: 1; }
+
+#lista-paradas { max-height: 560px; overflow-y: auto; padding-right: 4px; }
+
+.parada {
+  background: var(--papel);
+  border: 2px solid var(--borde);
+  border-left: 8px solid var(--verde);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.parada--inactiva { border-left-color: var(--terracota); opacity: 0.88; }
+
+.parada__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.parada h3 { margin: 0; font-size: 1.15rem; color: var(--verde-oscuro); }
+.parada p { margin: 4px 0; font-size: 14.5px; }
+.parada .id { font-size: 12px; color: #7a6a50; font-family: monospace; }
+
+.etiqueta {
+  flex-shrink: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--verde);
+}
+.etiqueta--inactiva { background: var(--terracota); }
+
+.rutas { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.ruta {
+  padding: 2px 10px;
+  background: var(--mostaza);
+  color: var(--tinta);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid #b98a25;
+}
+
+.acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+/* ---------- Mensajes ---------- */
+#mensaje { min-height: 8px; margin: 6px 0; font-weight: 700; }
+#mensaje.exito, #mensaje.error {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 2px solid;
+}
+#mensaje.exito { color: #24531e; background: #e3f0d3; border-color: #9cc27a; }
+#mensaje.error { color: #7b2a14; background: #f8dfd3; border-color: #d89a7f; }
+
+.vacio {
+  text-align: center;
+  padding: 24px 10px;
+  color: #6f604a;
+  border: 2px dashed var(--borde);
+  border-radius: 12px;
+}
+
+/* ---------- Mapa ---------- */
+.panel-mapa { grid-column: 1 / -1; }
+#mapa {
+  height: 480px;
+  width: 100%;
+  border-radius: 12px;
+  border: 3px solid var(--tierra);
+  box-shadow: inset 0 0 0 3px #fffaf0;
+  z-index: 0;
+}
+.leyenda { display: flex; gap: 18px; margin-bottom: 10px; font-size: 14px; font-weight: 600; }
+.punto {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+.punto--activa { background: var(--verde); }
+.punto--inactiva { background: var(--terracota); }
+
+/* Marcador personalizado (gota) */
+.pin {
+  width: 30px; height: 30px;
+  background: var(--verde);
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.pin::after {
+  content: "";
+  position: absolute;
+  top: 7px; left: 7px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+.pin--inactiva { background: var(--terracota); }
+.pin--seleccion { background: var(--mostaza); }
+
+.leaflet-popup-content-wrapper { border-radius: 12px; background: #fffaf0; }
+.leaflet-popup-content { font-family: "Nunito", sans-serif; margin: 12px 14px; }
+.popup-titulo { font-family: "Fraunces", serif; font-size: 16px; color: var(--verde-oscuro); }
+
+/* ---------- Pie ---------- */
+.pie {
+  margin-top: 10px;
+  padding: 22px;
+  text-align: center;
+  background: var(--verde-oscuro);
+  color: var(--papel-oscuro);
+  font-size: 14px;
+}
+.pie p { margin: 0; }
+
+@media (max-width: 520px) {
+  .fila { grid-template-columns: 1fr; }
+  .barra { flex-direction: column; }
+  #mapa { height: 360px; }
+  .encabezado::before { width: 44px; height: 44px; right: 5%; }
+}
+
+/* ============================================
+   v2 · vista pública, administración y PWA
+   ============================================ */
+a { color: var(--verde); font-weight: 700; }
+a:hover { color: var(--terracota); }
+
+.encabezado--compacto { padding: 26px 20px 80px; }
+.encabezado--compacto h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); }
+.encabezado--compacto .lema { font-size: 1rem; }
+
+/* ---------- Vista pública ---------- */
+main.publico {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  grid-template-areas:
+    "controles mapa"
+    "resultados mapa";
+  gap: 20px;
+  align-items: start;
+}
+.controles { grid-area: controles; display: flex; flex-direction: column; gap: 12px; }
+.panel-mapa-publico { grid-area: mapa; position: sticky; top: 12px; }
+.resultados { grid-area: resultados; }
+.panel-mapa-publico #mapa { height: min(72vh, 640px); }
+
+@media (max-width: 900px) {
+  main.publico {
+    grid-template-columns: 1fr;
+    grid-template-areas: "controles" "mapa" "resultados";
+  }
+  .panel-mapa-publico { position: static; }
+  .panel-mapa-publico #mapa { height: 55vh; min-height: 320px; }
+}
+
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.btn--grande { width: 100%; padding: 15px 18px; font-size: 1.05rem; }
+.btn[disabled] { opacity: 0.55; cursor: wait; }
+a.btn { display: inline-block; text-decoration: none; }
+
+.casilla {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 600; font-size: 14.5px; cursor: pointer;
+}
+.casilla input { width: 20px; height: 20px; accent-color: var(--verde); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  --color: var(--tierra);
+  padding: 6px 14px;
+  font: inherit; font-size: 13.5px; font-weight: 700;
+  color: var(--tinta);
+  background: #fff;
+  border: 2px solid var(--color);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip::before {
+  content: ""; display: inline-block; width: 18px; height: 5px;
+  margin-right: 7px; vertical-align: middle;
+  background: var(--color); border-radius: 3px;
+}
+.chip--activo { background: var(--color); color: #fff; }
+.chip--activo::before { background: #fff; }
+
+.resultados__cabecera { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.resultados__cabecera h2 { flex: 1; }
+
+.distancia {
+  flex-shrink: 0;
+  padding: 2px 11px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 800;
+  background: #2f6f8f; color: #fff;
+}
+.punto--yo { background: #2f6f8f; }
+
+/* ---------- Mensajes en la vista pública ---------- */
+.controles #mensaje:empty { display: none; }
+
+/* ---------- Pie ---------- */
+.pie a { color: var(--mostaza); }
+.pie p + p { margin-top: 6px; }
+
+/* ---------- Administración ---------- */
+.login { max-width: 440px; margin: 0 auto; padding: 22px 16px; display: block; }
+.enlace { font-size: 14px; }
+
+.barra-admin {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 10px;
+  max-width: 1200px; margin: 0 auto; padding: 14px 22px 0;
+}
+.barra-admin__acciones { display: flex; align-items: center; gap: 14px; }
+.pestanas { display: flex; gap: 6px; }
+.pestana {
+  padding: 10px 22px;
+  font: inherit; font-weight: 800;
+  color: var(--tierra-oscura);
+  background: var(--papel-oscuro);
+  border: 2px solid var(--borde);
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+}
+.pestana--activa { background: #fffaf0; color: var(--verde-oscuro); border-bottom-color: #fffaf0; }
+
+#vista-panel > #mensaje { max-width: 1200px; margin: 10px auto 0; padding: 0 22px; }
+#vista-panel > #mensaje:empty { display: none; }
+.tab { margin-top: 0; }
+
+.orden { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.orden li {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 8px 10px;
+  background: var(--papel);
+  border: 2px solid var(--borde);
+  border-radius: 10px;
+  counter-increment: paso;
+}
+.orden { counter-reset: paso; }
+.orden li:not(.orden__vacio)::before {
+  content: counter(paso);
+  flex-shrink: 0;
+  width: 26px; height: 26px; line-height: 26px;
+  text-align: center; font-weight: 800; color: #fff;
+  background: var(--verde); border-radius: 50%;
+}
+.orden__nombre { flex: 1; font-size: 14.5px; font-weight: 600; }
+.orden__botones { display: flex; gap: 4px; }
+.orden__vacio { justify-content: center; color: #6f604a; border-style: dashed !important; }
+input[type="color"] { padding: 4px; height: 46px; cursor: pointer; }
+
+/* Botones táctiles más cómodos en celular */
+@media (max-width: 520px) {
+  .btn--chico { padding: 9px 13px; }
+  .barra-admin { padding: 12px 16px 0; }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
